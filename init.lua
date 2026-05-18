@@ -90,8 +90,7 @@ vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 vim.opt.modifiable = true -- allow buffer modifications
 vim.opt.encoding = "utf-8" -- set encoding
 
-vim.opt.guicursor =
-	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and settings
+-- vim.opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and settings
 
 -- Folding: requires treesitter available at runtime; safe fallback if not
 vim.opt.foldmethod = "expr" -- use expression for folding
@@ -436,7 +435,9 @@ vim.pack.add({
 		version = vim.version.range("1.*"),
 	},
 	"https://github.com/L3MON4D3/LuaSnip",
-	"https://github.com/folke/tokyonight.nvim"
+	"https://github.com/folke/tokyonight.nvim",
+  "https://github.com/mattn/emmet-vim",
+  "https://github.com/sphamba/smear-cursor.nvim"
 })
 
 local function packadd(name)
@@ -447,6 +448,7 @@ packadd("gitsigns.nvim")
 packadd("mini.nvim")
 packadd("fzf-lua")
 packadd("nvim-tree.lua")
+packadd("emmet-vim")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
@@ -454,6 +456,7 @@ packadd("efmls-configs-nvim")
 packadd("blink.cmp")
 packadd("LuaSnip")
 packadd("tokyonight.nvim")
+packadd("smear-cursor.nvim")
 
 -- ============================================================================
 -- PLUGIN CONFIGS
@@ -943,4 +946,13 @@ vim.cmd.colorscheme("tokyonight-storm")
 vim.api.nvim_create_user_command('PackUpdate', function()
   vim.pack.update()
 end, {})
+--- ===================================================
+---
+---
+--- ===================================================
+require("smear_cursor").setup({
+  stiffness = 0.8,
+  tailing_stiffness = 0.5,
+  distance_stop_animating = 0.5
+})
 --- ===================================================
