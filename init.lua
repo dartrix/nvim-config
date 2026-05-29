@@ -480,10 +480,13 @@ local setup_treesitter = function()
 		"markdown",
 		"python",
 		"typescript",
+    "react",
 		"vue",
 		"svelte",
 		"bash",
 		"lua",
+    "tsx",
+    "jsx",
 		"python",
 	}
 
